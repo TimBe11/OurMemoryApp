@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title id='title'>Our Space :></title>
+		<link rel="stylesheet" href="./CSS/Aila.css" >
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+	</head>
+	<style>
+		body {
+			background: url("./IMAGES/NightSky.jpg") no-repeat fixed center;
+			background-size: cover;
+		}
+
+		div.ourPictures{
+			align: center;
+			
+		}
+		
+		img.ourPictures {
+			width:70%;
+			height:auto;
+			border-radius:10px;
+			margin-left:15%;
+		}
+		
+		img.ourPictures[src='./IMAGES/NoPicture.jpg'] {
+			opacity: 0.4;
+		}
+		
+		.bottomLeft {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+		}
+		
+		.bottomRight {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+
+	</style>
+	<body>
+		<header>
+		</header>
+		<main>
+		</main>
+		<h1>Welcome to our space <a id='heart_link' href='./HTML/uploadMemory.html' style='text-decoration:none; color: white;'> &hearts; </a></h1> <!--Verander my naar our, als condities true worden -->
+		<div id='album'>
+
+			<div id="photos" style='display:grid; grid-template-columns: auto auto; margin-left:25%; margin-right:25%;'>
+				<div class='ourPictures'>
+					<a href="./keepTime.html"> Our times </a>
+				</div>
+				<div class='ourPictures'>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

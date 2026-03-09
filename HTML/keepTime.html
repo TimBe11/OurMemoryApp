@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title id='title'>My Space :></title>
+		<link rel="stylesheet" href="../CSS/Aila.css" >
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+	</head>
+	<style>
+		body {
+			background: url("../IMAGES/NightSky.jpg") no-repeat fixed center;
+			background-size: cover;
+		}
+
+		div.ourPictures{
+			align: center;
+			
+		}
+		
+		img.ourPictures {
+			width:70%;
+			height:auto;
+			border-radius:10px;
+			margin-left:15%;
+		}
+		
+		img.ourPictures[src='./IMAGES/NoPicture.jpg'] {
+			opacity: 0.4;
+		}
+		
+		.bottomLeft {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+		}
+		
+		.bottomRight {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+		
+		input{
+			padding:7px;
+			width:20%;
+			border-radius:5px;
+			margin-bottom:30px;
+		}
+		
+		button {
+			display:block;
+			font-family: Pacifico;
+			border-style:solid;
+			display:inline-block;
+			padding:0px 20px;
+			font-size:20px;
+			border-radius:10px; 
+			border-color:transparent;
+			cursor:pointer;
+			width:25%;
+		}
+		
+		img {
+			width:60%;
+			border-radius:5px;
+		}
+		
+		div {
+			width:100%;
+			align-items:center;
+			border-color:red;
+			border-radius:3px;
+			text-align:center;
+		}
+	</style>
+	<body>
+		<header>
+		</header>
+		<main>
+		</main>
+		<h1> <a id='heart_link'href='../Aila_Main.html' style='text-decoration:none; color: white;'> &hearts; </a></h1> <!--Verander my naar our, als condities true worden -->
+		<div class='input' id="days">
+		Aila's time:
+		</div>
+		<div class='input' id="inputField">
+		</div>
+		<div class='input' id="days">
+		Tim's time:
+		</div>
+		<div class='input' id="inputField2">
+		</div>
+		<div class='input' id="days">
+		Time we know each other:
+		</div>
+		<div class='input' id="inputField3">
+		</div>
+		<div class='input' id="days">
+		Time since we started our relationship:
+		</div>
+		<div class='input' id="inputField4">
+		</div>
+		<input type="file" id="fileInput" accept="image/*" style="display:none;" />
+	</body>
+	<script>
+	function startTime() {
+		const today = new Date();
+		const dayMet = new Date("2025-01-08T13:05:00+01:00");
+		const dayRelation = new Date("2025-07-08T13:11:00+02:00");
+		let ailaToday = today.toLocaleTimeString("en-US", { timeZone: "Asia/Manila"});
+		let timToday = today.toLocaleTimeString("en-US", { timeZone: "Europe/Amsterdam"});
+		
+		dateDiff(today, dayMet, 'inputField3');
+		dateDiff(today, dayRelation, 'inputField4');
+		document.getElementById('inputField').innerHTML =  ailaToday;
+		document.getElementById('inputField2').innerHTML =  timToday;
+		
+		setTimeout(startTime, 1000);
+		
+		
+	}
+	function checkTime(i) {
+	  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+	  return i;
+}
+	function dateDiff(date1, date2, input)
+	{
+		let years = date1.getFullYear() - date2.getFullYear();
+		let months = date1.getMonth() - date2.getMonth();
+		let days = date1.getDate() - date2.getDate();
+		let hours = date1.getHours() - date2.getHours();
+		let minutes = date1.getMinutes() - date2.getMinutes();
+		let seconds = date1.getSeconds() - date2.getSeconds();
+		
+		if (seconds < 0) {
+			seconds += 60;
+			minutes--;
+		}
+
+
+		if (minutes < 0) {
+			minutes += 60;
+			hours--;
+		}
+
+		if (hours < 0) {
+			hours += 24;
+			days--;
+		}
+
+		if (days < 0) {
+			const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+			days += prevMonth.getDate();
+			months--;
+		}
+
+		if (months < 0) {
+			months += 12;
+			years--;
+		}
+		
+		let secondsT = seconds;
+		let minutesT = minutes;
+		let monthsT = months + " months ";
+		let yearsT = years + " years ";
+		let daysT = days + " days ";
+		
+		if(seconds < 10)
+			secondsT = "0" + secondsT;
+		
+		if(minutes < 10)
+			minutesT = "0" + minutesT;
+		
+		if(years == 1)
+			yearsT = years + " year ";
+			
+		if(months == 1)
+			monthsT = months + " month ";
+			
+		if(days == 1)
+			daysT = days + " day ";
+			
+		document.getElementById(input).innerHTML =  yearsT + monthsT + daysT + hours + ":" + minutesT + ":" + secondsT;
+	}
+	
+	startTime();
+	</script>
+</html>
