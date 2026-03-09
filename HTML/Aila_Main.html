@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title id='title'>Our Space :></title>
+		<link rel="stylesheet" href="./CSS/Aila.css" >
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+	</head>
+	<style>
+		body {
+			background: url("./IMAGES/NightSky.jpg") no-repeat fixed center;
+			background-size: cover;
+		}
+
+		div.ourPictures{
+			align: center;
+			
+		}
+		
+		img.ourPictures {
+			width:70%;
+			height:auto;
+			border-radius:10px;
+			margin-left:15%;
+		}
+		
+		img.ourPictures[src='./IMAGES/NoPicture.jpg'] {
+			opacity: 0.4;
+		}
+		
+		.bottomLeft {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+		}
+		
+		.bottomRight {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+
+	</style>
+	<body>
+		<header>
+		</header>
+		<main>
+		</main>
+		<h1>Welcome to our space <a id='heart_link' href='./HTML/uploadMemory.html' style='text-decoration:none; color: white;'> &hearts; </a></h1> <!--Verander my naar our, als condities true worden -->
+		<div id='album'>
+		<p> Our photo album </p>
+			<div id="photos" style='display:grid; grid-template-columns: auto auto; margin-left:25%; margin-right:25%;'>
+				<div class='ourPictures'>
+					<p class='ourPictures'>Our first time talking together</p>
+					<img src='./IMAGES/OurFirstChat.jpg' class='ourPictures' >
+				</div>
+				<div class='ourPictures'>
+					<p class='ourPictures'>Our first music list together</p>
+					<a href='https://open.spotify.com/playlist/5ovpEfCUJL1dqPmtkylHaJ?si=c7d83dc9d96a4b99'><img src='./IMAGES/OurFirstGhibli.jpg' class='ourPictures'></a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		
+		const githubToken = "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";
+		const owner = "TimBe11";
+		const repo = "photobook";
+		const path = "data.json";
+		
+		loadGallery();
+		
+		async function fetchPrivateJSON() {
+		  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+		  const response = await fetch(apiUrl, {
+			headers: { Authorization: `token ${githubToken}` }
+		  });
+
+		  const fileData = await response.json();
+
+		  const decoded = atob(fileData.content);
+		  const json = JSON.parse(decoded);
+
+		  console.log(json);
+		  return json;
+		}
+		async function loadGallery() {
+			const data = await fetchPrivateJSON(); // or fetchJSON() for public repo
+			let i = 0;
+			data.images.forEach(entry => {
+				divName = "picNum" + i;
+				var divElement = document.createElement("div");
+				divElement.id = divName;
+				divElement.classList.add('ourPictures');
+				var pElement = document.createElement("p");
+				pElement.classList.add('ourPictures');
+				if(entry.caption)
+					pElement.innerHTML  = entry.caption;
+				var imgElement = document.createElement('img');
+				imgElement.classList.add('ourPictures');
+				imgElement.src = entry.url;
+				document.getElementById("photos").appendChild(divElement);
+				document.getElementById(divName).appendChild(pElement);
+				document.getElementById(divName).appendChild(imgElement);
+				i++;
+				}
+
+			);
+		}
+	</script>
+</html>
