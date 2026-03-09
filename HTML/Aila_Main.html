@@ -72,8 +72,7 @@
 		async function fetchPrivateJSON() {
 		  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
-		  const response = await fetch(apiUrl, {
-			headers: { Authorization: `token ${githubToken}` }
+		  const response = await fetch(apiUrl,
 		  });
 
 		  const fileData = await response.json();
@@ -110,4 +109,5 @@
 	</script>
 
 </html>
+
 
