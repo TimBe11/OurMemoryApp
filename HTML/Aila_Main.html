@@ -70,13 +70,13 @@
 		loadGallery();
 		
 		async function fetchPrivateJSON() {
-		  const apiUrl = ``/../JSON/data.json`;
+		  const apiUrl = `/../JSON/data.json`;
 
 		  const response = await fetch(apiUrl);
 
 		  const fileData = await response.json();
 
-		  const json = JSON.parse(decoded);
+		  const json = JSON.parse(fileData);
 
 		  console.log(json);
 		  return json;
