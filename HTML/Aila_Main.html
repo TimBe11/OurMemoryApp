@@ -76,7 +76,6 @@
 
 		  const fileData = await response.json();
 
-		  const decoded = atob(fileData.content);
 		  const json = JSON.parse(decoded);
 
 		  console.log(json);
