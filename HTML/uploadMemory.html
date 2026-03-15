@@ -167,8 +167,8 @@
 	async function appendToGitHubJSON(newEntry) {
 		const apiUrl = `./JSON/data.json`;
 
-		console.log("what?");
 		const res = await fetch(apiUrl);
+		console.log(res);
 		const json = await res.json();
 			console.log(json);
 
