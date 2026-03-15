@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title id='title'>Our Space :></title>
@@ -70,9 +71,9 @@
 		
 		async function fetchPrivateJSON() {
 		  const apiUrl = `../JSON/data.json`;
-
+		
 		  const response = await fetch(apiUrl);
-
+			console.log(response);
 		  const fileData = await response.json();
 
 		  const json = JSON.parse(fileData);
