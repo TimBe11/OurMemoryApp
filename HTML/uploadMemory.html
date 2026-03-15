@@ -174,7 +174,7 @@
 		const fileData = await res.json();
 			console.log(fileData);
 
-		const json = JSON.parse(atob(fileData.content));
+		const json = JSON.parse(fileData.content);
 
 
 		json.images.push(newEntry);
