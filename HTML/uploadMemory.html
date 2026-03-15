@@ -168,14 +168,9 @@
 		const apiUrl = `/../JSON/data.json`;
 
 	
-		const res = await fetch(apiUrl, {
-			headers: { Authorization: `token ${githubToken}` }
-		});
-		const fileData = await res.json();
+		const res = await fetch(apiUrl);
+		const json = await res.json();
 			console.log(fileData);
-
-		const json = JSON.parse(fileData.content);
-
 
 		json.images.push(newEntry);
 
