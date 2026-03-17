@@ -103,7 +103,7 @@
 		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
 		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
 		const supabased = supabase.createClient(supabaseUrl, supabaseKey);
-		
+		console.log("Gello");
 		const selectBtn = document.getElementById("selectBtn");
 		const fileInput = document.getElementById("fileInput");
 		const storeBtn = document.getElementById("storeBtn");
@@ -116,6 +116,7 @@
 		});
 		
 		fileInput.addEventListener("change", () => {
+			console.log("hello")
 			const file = fileInput.files[0];
 			if (!file) return;
 
