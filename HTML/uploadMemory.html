@@ -100,12 +100,11 @@
 	<script>
 		const cloudName = "dgtjvawpe";
 		const uploadPreset = "photobook";
-		document.addEventListener("DOMContentLoaded", () => {
-			const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
-			const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
-			const client = createClient(supabaseUrl, supabaseKey);
-		});
-		console.log("Gello");
+		
+		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
+		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
+		const client = createClient(supabaseUrl, supabaseKey);
+		
 		const selectBtn = document.getElementById("selectBtn");
 		const fileInput = document.getElementById("fileInput");
 		const storeBtn = document.getElementById("storeBtn");
