@@ -178,16 +178,12 @@
 		const updatedContent = btoa(JSON.stringify(json, null, 2));
 
 		const res2 = await fetch(apiUrl, {
-			method: "PUT",
+			method: "POST",
 			headers: {
-		Authorization: `token ${githubToken}`,
+		Authorization: `Bearer ${githubToken}`,
 			"Content-Type": "application/json"
 			},
-			body: JSON.stringify({
-			message: "Add new image",
-			content: updatedContent,
-			sha: json.sha
-			})
+			body: updatedContent
 		});
 		console.log(res2);
 		console.log("JSON updated on GitHub!");
