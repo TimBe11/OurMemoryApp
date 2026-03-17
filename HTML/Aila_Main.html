@@ -79,7 +79,7 @@
 		  return json;
 		}
 		async function loadGallery() {
-			const data = await fetchPrivateJSON(); // or fetchJSON() for public repo
+			const { data } = await fetchPrivateJSON(); // or fetchJSON() for public repo
 			let i = 0;
 			data.images.forEach(entry => {
 				divName = "picNum" + i;
