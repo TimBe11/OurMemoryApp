@@ -173,7 +173,7 @@
 	});
 	
 	async function appendToSupabase(iUrl, iCaption) {
-		let { data, error } = await client.from('photos').insert([
+		let { data, error } = await client.from('photobook').insert([
       		{ url: iUrl, caption: iCaption }
    		]);
 		
