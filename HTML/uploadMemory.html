@@ -174,9 +174,9 @@
 	});
 	
 	async function appendToSupabase(iUrl, iCaption) {
-		//let { data, error } = await supabased.from('photos').insert([
-      		//{ url: iUrl, caption: iCaption }
-   		//]);
+		let { data, error } = await supabased.from('photos').insert([
+      		{ url: iUrl, caption: iCaption }
+   		]);
 		
 		console.log("JSON updated on GitHub!");
 
