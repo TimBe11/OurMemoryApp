@@ -96,6 +96,7 @@
 			<button id="storeBtn" style="display:none">Store memory</button>
 		</div>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 	<script>
 		const cloudName = "dgtjvawpe";
 		const uploadPreset = "photobook";
@@ -148,36 +149,33 @@
 					);
 
 					const data = await response.json();
+					const inputUrl = data.secure_url;
+					const inputCaption = document.getElementById("imageDescription").value;
 					const newImage = {
 						title: "Photo",
 						body: JSON.stringify({
-					      	url: data.secure_url,
-							caption: document.getElementById("imageDescription").value
+					      	url: inputUrl,
+							caption: inputCaption
 					    }),
 						labels: ["photo"]
 					};
 					console.log(newImage);
-					await appendToGitHubJSON(newImage);
+					await appendToSupabase(inputUrl, inputCaption);
 					//window.location.replace("../HTML/Aila_Main.html");
 				} catch (error) {
 				console.error("Upload failed:", error);
 			}
 	});
 	
-	async function appendToGitHubJSON(newEntry) {
-		const apiUrl = `https://api.github.com/repos/TimBe11/OurMemoryApp/issues`;
+	async function appendToSupabase(iUrl, iCaption) {
 
-		const githubToken = "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";
-
-		const res2 = await fetch(apiUrl, {
-			method: "POST",
-			headers: {
-		Authorization: `Bearer ${githubToken}`,
-			"Content-Type": "application/json"
-			},
-			body: JSON.stringify(newEntry)
-		});
-		console.log(res2);
+		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
+		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
+		const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+		let { data, error } = await supabase.from('photos').insert([
+      		{ url: iUrl, caption: iCaption }
+   		]);
+		
 		console.log("JSON updated on GitHub!");
 
 	}
