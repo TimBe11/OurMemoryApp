@@ -103,7 +103,6 @@
 		
 		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
 		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
-		const supabased = supabase.createClient(supabaseUrl, supabaseKey);
 		console.log("Gello");
 		const selectBtn = document.getElementById("selectBtn");
 		const fileInput = document.getElementById("fileInput");
@@ -173,9 +172,9 @@
 	});
 	
 	async function appendToSupabase(iUrl, iCaption) {
-		let { data, error } = await supabased.from('photos').insert([
-      		{ url: iUrl, caption: iCaption }
-   		]);
+		//let { data, error } = await supabased.from('photos').insert([
+      		//{ url: iUrl, caption: iCaption }
+   		//]);
 		
 		console.log("JSON updated on GitHub!");
 
