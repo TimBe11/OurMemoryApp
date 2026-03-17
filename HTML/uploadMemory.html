@@ -166,11 +166,6 @@
 	
 	async function appendToGitHubJSON(newEntry) {
 		const apiUrl = `https://api.github.com/repos/TimBe11/OurMemoryApp/issues`;
-		
-		const res = await fetch(apiUrl);
-		console.log(res);
-		const json = await res.json();
-			console.log(json);
 	
 		json.images.push(newEntry);
 
@@ -183,7 +178,7 @@
 		Authorization: `Bearer ${githubToken}`,
 			"Content-Type": "application/json"
 			},
-			body: updatedContent
+			body: JSON.stringify(newEntry)
 		});
 		console.log(res2);
 		console.log("JSON updated on GitHub!");
