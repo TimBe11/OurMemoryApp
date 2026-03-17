@@ -166,11 +166,8 @@
 	
 	async function appendToGitHubJSON(newEntry) {
 		const apiUrl = `https://api.github.com/repos/TimBe11/OurMemoryApp/issues`;
-	
-		json.images.push(newEntry);
 
 		const githubToken = "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";
-		const updatedContent = btoa(JSON.stringify(json, null, 2));
 
 		const res2 = await fetch(apiUrl, {
 			method: "POST",
