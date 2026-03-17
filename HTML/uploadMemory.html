@@ -96,14 +96,14 @@
 			<button id="storeBtn" style="display:none">Store memory</button>
 		</div>
 	</body>
-	<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+	<script src="https://unpkg.com/@supabase/supabase-js@2.99.2/dist/umd/supabase.js"></script>
 	<script>
 		const cloudName = "dgtjvawpe";
 		const uploadPreset = "photobook";
 		
 		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
 		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
-		const client = Supabase.createClient(supabaseUrl, supabaseKey);
+		const client = supabase.createClient(supabaseUrl, supabaseKey);
 		
 		const selectBtn = document.getElementById("selectBtn");
 		const fileInput = document.getElementById("fileInput");
