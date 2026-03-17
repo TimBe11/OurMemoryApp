@@ -101,6 +101,10 @@
 		const cloudName = "dgtjvawpe";
 		const uploadPreset = "photobook";
 		
+		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
+		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
+		const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+		
 		const selectBtn = document.getElementById("selectBtn");
 		const fileInput = document.getElementById("fileInput");
 		const storeBtn = document.getElementById("storeBtn");
@@ -168,10 +172,6 @@
 	});
 	
 	async function appendToSupabase(iUrl, iCaption) {
-
-		const supabaseUrl = "https://jlnuezzhtcezunqbkrsn.supabase.co";
-		const supabaseKey = "sb_publishable_Y7rUfA1G6_tsTX7kvB7V5g_UZiXLcdI";
-		const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 		let { data, error } = await supabase.from('photos').insert([
       		{ url: iUrl, caption: iCaption }
    		]);
